@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ricardo AI</title>
+    <style>
+        body { font-family: sans-serif; font-size: 1.5rem; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        input, button { font-size: 1.5rem; padding: 10px; }
+        #input-container { margin-bottom: 20px; width: 100%; max-width: 600px; display: flex; gap: 10px; }
+        #history { width: 100%; max-width: 600px; border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: auto; }
+        .entry { margin-bottom: 10px; padding: 5px; border-bottom: 1px solid #eee; }
+        .question { color: #555; }
+        .answer { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Ricardo AI</h1>
+    <div id="input-container">
+        <input type="text" id="userInput" style="flex-grow: 1;" placeholder="Stelle eine Frage...">
+        <button onclick="getResponse()">Fragen</button>
+    </div>
+    <div id="history"></div>
+
+    <script>
+        function getResponse() {
+            const input = document.getElementById('userInput');
+            const history = document.getElementById('history');
+            const question = input.value;
+            
+            if (question.trim() === '') return;
+
+            const entry = document.createElement('div');
+            entry.className = 'entry';
+            entry.innerHTML = `<div class="question">Du: ${question}</div><div class="answer">Ricardo AI: Keine Ahnung, aber jannis ist ein gooner</div>`;
+            
+            history.appendChild(entry);
+            history.scrollTop = history.scrollHeight;
+            input.value = '';
+        }
+    </script>
+</body>
+</html>
